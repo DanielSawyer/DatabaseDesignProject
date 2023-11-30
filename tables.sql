@@ -1,3 +1,8 @@
+CREATE TABLE Department (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(50)
+);
+
 CREATE TABLE Employee (
     emp_id INT PRIMARY KEY,
     age INT,
@@ -5,7 +10,7 @@ CREATE TABLE Employee (
     f_name VARCHAR(50),
     l_name VARCHAR(50),
     address VARCHAR(100),
-    rank INT,
+    `rank` INT,
     title VARCHAR(50),
     dept_id INT,
     super_id INT,
@@ -20,6 +25,12 @@ CREATE TABLE Applicant (
     f_name VARCHAR(50),
     l_name VARCHAR(50),
     address VARCHAR(100)
+);
+
+CREATE TABLE Marketing_Site (
+    site_id INT PRIMARY KEY,
+    site_name VARCHAR(50),
+    location VARCHAR(100)
 );
 
 CREATE TABLE Site_Employment (
@@ -41,6 +52,15 @@ CREATE TABLE Customer (
     FOREIGN KEY (emp_id) REFERENCES Employee(emp_id)
 );
 
+CREATE TABLE Vendor (
+    vendor_id INT PRIMARY KEY,
+    vendor_name VARCHAR(50),
+    address VARCHAR(100),
+    account_number VARCHAR(20),
+    credit DECIMAL(10, 2),
+    url VARCHAR(100)
+);
+
 CREATE TABLE Part_supplies (
     type VARCHAR(50),
     v_id INT,
@@ -49,10 +69,15 @@ CREATE TABLE Part_supplies (
     PRIMARY KEY (type, v_id)
 );
 
-CREATE TABLE Department (
-    dept_id INT PRIMARY KEY,
-    dept_name VARCHAR(50)
+CREATE TABLE Product (
+    product_id INT PRIMARY KEY,
+    type VARCHAR(50),
+    size VARCHAR(20),
+    price DECIMAL(10, 2),
+    weight DECIMAL(10, 2),
+    style VARCHAR(50)
 );
+
 
 CREATE TABLE Product_Materials (
     product_id INT,
@@ -75,30 +100,6 @@ CREATE TABLE Phone (
     phone_number VARCHAR(15),
     PRIMARY KEY (person_id, phone_number)
     -- person_id can refer to any person (employee, applicant, customer)
-);
-
-CREATE TABLE Product (
-    product_id INT PRIMARY KEY,
-    type VARCHAR(50),
-    size VARCHAR(20),
-    price DECIMAL(10, 2),
-    weight DECIMAL(10, 2),
-    style VARCHAR(50)
-);
-
-CREATE TABLE Vendor (
-    vendor_id INT PRIMARY KEY,
-    vendor_name VARCHAR(50),
-    address VARCHAR(100),
-    account_number VARCHAR(20),
-    credit DECIMAL(10, 2),
-    url VARCHAR(100)
-);
-
-CREATE TABLE Marketing_Site (
-    site_id INT PRIMARY KEY,
-    site_name VARCHAR(50),
-    location VARCHAR(100)
 );
 
 CREATE TABLE Part (
